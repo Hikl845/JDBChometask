@@ -1,0 +1,130 @@
+2026-01-28 04:17:21.030964+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000aCREATE [*]DATABASE IF NOT EXISTS MegaSoftDB;\000aUSE MegaSoftDB;\000a\000aCREATE TABLE worker (\000a    id INT AUTO_INCREMENT PRIMARY KEY,\000a    name VARCHAR(1000) NOT NULL\000a        CHECK (CHAR_LENGTH(name) >= 2 AND CHAR_LENGTH(name) <= 1000),\000a    birthday DATE NOT NULL\000a        CHECK (YEAR(birthday) > 1900),\000a    level VARCHAR(20) NOT NULL\000a        CHECK (level IN ('Trainee', 'Junior', 'Middle', 'Senior')),\000a    salary INT NOT NULL\000a        CHECK (salary >= 100 AND salary <= 100000)\000a);\000a\000aCREATE TABLE client (\000a    id INT AUTO_INCREMENT PRIMARY KEY,\000a    name VARCHAR(1000) NOT NULL\000a        CHECK (CHAR_LENGTH(name) >= 2 AND CHAR_LENGTH(name) <= 1000)\000a);\000a\000aCREATE TABLE project (\000a    id INT AUTO_INCREMENT PRIMARY KEY,\000a    client_id INT NOT NULL,\000a    start_date DATE NOT NULL,\000a    finish_date DATE NOT NULL,\000a    \000a    CHECK (finish_date > start_date),\000a    \000a    FOREIGN KEY (client_id)\000a        REFERENCES client(id)\000a        ON DELETE RESTRICT\000a        ON UPDATE CASCADE\000a);\000a\000a\000aCREATE TABLE project_worker (\000a    project_id INT NOT NULL,\000a    worker_id INT NOT NULL,\000a\000a    PRIMARY KEY (project_id, worker_id),\000a\000a    FOREIGN KEY (project_id)\000a        REFERENCES project(id)\000a        ON DELETE CASCADE\000a        ON UPDATE CASCADE,\000a\000a    FOREIGN KEY (worker_id)\000a        REFERENCES worker(id)\000a        ON DELETE CASCADE\000a        ON UPDATE CASCADE\000a);\000a"; expected "OR REPLACE, FORCE, VIEW, MATERIALIZED, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMPORARY, TABLE, SYNONYM, UNIQUE, SPATIAL, INDEX"; SQL statement:
+
+CREATE DATABASE IF NOT EXISTS MegaSoftDB;
+USE MegaSoftDB;
+
+CREATE TABLE worker (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(1000) NOT NULL
+        CHECK (CHAR_LENGTH(name) >= 2 AND CHAR_LENGTH(name) <= 1000),
+    birthday DATE NOT NULL
+        CHECK (YEAR(birthday) > 1900),
+    level VARCHAR(20) NOT NULL
+        CHECK (level IN ('Trainee', 'Junior', 'Middle', 'Senior')),
+    salary INT NOT NULL
+        CHECK (salary >= 100 AND salary <= 100000)
+);
+
+CREATE TABLE client (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(1000) NOT NULL
+        CHECK (CHAR_LENGTH(name) >= 2 AND CHAR_LENGTH(name) <= 1000)
+);
+
+CREATE TABLE project (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    client_id INT NOT NULL,
+    start_date DATE NOT NULL,
+    finish_date DATE NOT NULL,
+    
+    CHECK (finish_date > start_date),
+    
+    FOREIGN KEY (client_id)
+        REFERENCES client(id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+
+CREATE TABLE project_worker (
+    project_id INT NOT NULL,
+    worker_id INT NOT NULL,
+
+    PRIMARY KEY (project_id, worker_id),
+
+    FOREIGN KEY (project_id)
+        REFERENCES project(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (worker_id)
+        REFERENCES worker(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+ [42001-224]
+2026-01-28 04:17:42.252486+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000aCREATE [*]DATABASE IF NOT EXISTS MegaSoftDB;\000aUSE MegaSoftDB;\000a\000aCREATE TABLE worker (\000a    id INT AUTO_INCREMENT PRIMARY KEY,\000a    name VARCHAR(1000) NOT NULL\000a        CHECK (CHAR_LENGTH(name) >= 2 AND CHAR_LENGTH(name) <= 1000),\000a    birthday DATE NOT NULL\000a        CHECK (YEAR(birthday) > 1900),\000a    level VARCHAR(20) NOT NULL\000a        CHECK (level IN ('Trainee', 'Junior', 'Middle', 'Senior')),\000a    salary INT NOT NULL\000a        CHECK (salary >= 100 AND salary <= 100000)\000a);\000a\000aCREATE TABLE client (\000a    id INT AUTO_INCREMENT PRIMARY KEY,\000a    name VARCHAR(1000) NOT NULL\000a        CHECK (CHAR_LENGTH(name) >= 2 AND CHAR_LENGTH(name) <= 1000)\000a);\000a\000aCREATE TABLE project (\000a    id INT AUTO_INCREMENT PRIMARY KEY,\000a    client_id INT NOT NULL,\000a    start_date DATE NOT NULL,\000a    finish_date DATE NOT NULL,\000a    \000a    CHECK (finish_date > start_date),\000a    \000a    FOREIGN KEY (client_id)\000a        REFERENCES client(id)\000a        ON DELETE RESTRICT\000a        ON UPDATE CASCADE\000a);\000a\000a\000aCREATE TABLE project_worker (\000a    project_id INT NOT NULL,\000a    worker_id INT NOT NULL,\000a\000a    PRIMARY KEY (project_id, worker_id),\000a\000a    FOREIGN KEY (project_id)\000a        REFERENCES project(id)\000a        ON DELETE CASCADE\000a        ON UPDATE CASCADE,\000a\000a    FOREIGN KEY (worker_id)\000a        REFERENCES worker(id)\000a        ON DELETE CASCADE\000a        ON UPDATE CASCADE\000a);\000a"; expected "OR REPLACE, FORCE, VIEW, MATERIALIZED, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMPORARY, TABLE, SYNONYM, UNIQUE, SPATIAL, INDEX"; SQL statement:
+
+CREATE DATABASE IF NOT EXISTS MegaSoftDB;
+USE MegaSoftDB;
+
+CREATE TABLE worker (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(1000) NOT NULL
+        CHECK (CHAR_LENGTH(name) >= 2 AND CHAR_LENGTH(name) <= 1000),
+    birthday DATE NOT NULL
+        CHECK (YEAR(birthday) > 1900),
+    level VARCHAR(20) NOT NULL
+        CHECK (level IN ('Trainee', 'Junior', 'Middle', 'Senior')),
+    salary INT NOT NULL
+        CHECK (salary >= 100 AND salary <= 100000)
+);
+
+CREATE TABLE client (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(1000) NOT NULL
+        CHECK (CHAR_LENGTH(name) >= 2 AND CHAR_LENGTH(name) <= 1000)
+);
+
+CREATE TABLE project (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    client_id INT NOT NULL,
+    start_date DATE NOT NULL,
+    finish_date DATE NOT NULL,
+    
+    CHECK (finish_date > start_date),
+    
+    FOREIGN KEY (client_id)
+        REFERENCES client(id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+
+CREATE TABLE project_worker (
+    project_id INT NOT NULL,
+    worker_id INT NOT NULL,
+
+    PRIMARY KEY (project_id, worker_id),
+
+    FOREIGN KEY (project_id)
+        REFERENCES project(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (worker_id)
+        REFERENCES worker(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+ [42001-224]
+2026-01-28 04:24:20.558082+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "MEGASOFTDB" not found; SQL statement:
+
+USE MegaSoftDB [90079-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.engine.Database.getSchema(Database.java:1578)
+	at org.h2.command.dml.Set.update(Set.java:397)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:256)
+	at org.h2.command.CommandList.update(CommandList.java:65)
+	at org.h2.command.Command.executeUpdate(Command.java:256)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.example.DatabasePopulateService.executeSqlFile(DatabasePopulateService.java:21)
+	at org.example.DatabasePopulateService.main(DatabasePopulateService.java:13)
